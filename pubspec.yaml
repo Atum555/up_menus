@@ -12,6 +12,10 @@ dependencies:
   # path: ^1.8.0
 
 dev_dependencies:
+  build_runner: ^2.4.3
   json_serializable: ^6.6.2
   lints: ^2.0.0
   test: ^1.21.0
+
+scripts:
+  build: dart run build_runner build
