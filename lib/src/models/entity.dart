@@ -1,10 +1,4 @@
-import 'package:json_annotation/json_annotation.dart';
-
-import 'package:up_menus/src/model/address.dart';
-import 'package:up_menus/src/model/contact.dart';
-import 'package:up_menus/src/model/establishment.dart';
-
-part 'entity.g.dart';
+part of up_menus.models;
 
 @JsonSerializable()
 class Entity {

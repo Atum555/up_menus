@@ -1,6 +1,4 @@
-import 'package:json_annotation/json_annotation.dart';
-
-part 'allergen.g.dart';
+part of up_menus.models;
 
 @JsonSerializable()
 class Allergen {

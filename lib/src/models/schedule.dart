@@ -1,8 +1,4 @@
-import 'package:json_annotation/json_annotation.dart';
-
-import 'package:up_menus/src/model/enums/period.dart';
-
-part 'schedule.g.dart';
+part of up_menus.models;
 
 @JsonSerializable()
 class Schedule {

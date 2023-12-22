@@ -1,9 +1,4 @@
-import 'package:json_annotation/json_annotation.dart';
-
-import 'package:up_menus/src/model/establishment.dart';
-import 'package:up_menus/src/model/dish.dart';
-
-part 'permanent_menu.g.dart';
+part of up_menus.models;
 
 @JsonSerializable()
 class PermanentMenu {

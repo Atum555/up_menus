@@ -1,8 +1,4 @@
-import 'package:json_annotation/json_annotation.dart';
-
-import 'package:up_menus/src/model/establishment.dart';
-
-part 'campus.g.dart';
+part of up_menus.models;
 
 @JsonSerializable()
 class Campus {

@@ -1,10 +1,4 @@
-// content_template.dart
-import 'package:json_annotation/json_annotation.dart';
-
-import 'package:up_menus/src/model/dish.dart';
-import 'package:up_menus/src/model/enums/period.dart';
-
-part 'content_template.g.dart';
+part of up_menus.models;
 
 @JsonSerializable()
 class ContentTemplate {
