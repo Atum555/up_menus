@@ -1,13 +1,22 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import 'package:up_menus/src/model/enums/period.dart';
+
 part 'schedule.g.dart';
 
 @JsonSerializable()
 class Schedule {
-  // TODO: Define model here
-  // ...
+  int id;
+  Period? period;
+  String startHour;
+  String finishHour;
 
-  Schedule(); // Add a default constructor
+  Schedule({
+    required this.id,
+    this.period,
+    required this.startHour,
+    required this.finishHour,
+  });
 
   factory Schedule.fromJson(Map<String, dynamic> json) => _$ScheduleFromJson(json);
 
