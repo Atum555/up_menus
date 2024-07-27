@@ -1,15 +1,15 @@
 name: up_menus
-description: A starting point for Dart libraries or applications.
+description: Api for the Univesity of Porto establisments menus
 version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+repository: https://github.com/niaefeup/up_menus
 
 environment:
   sdk: '>=3.0.0-edge.d5bd015cac5c620f46209c9db0b9ce2c4d9510d0 <4.0.0'
 
 # Add regular dependencies here.
 dependencies: 
+  http: ^0.13.6
   json_annotation: ^4.8.1 
-  # path: ^1.8.0
 
 dev_dependencies:
   build_runner: ^2.4.3
@@ -19,3 +19,4 @@ dev_dependencies:
 
 scripts:
   build: dart run build_runner build
+  #TODO: documentation script
