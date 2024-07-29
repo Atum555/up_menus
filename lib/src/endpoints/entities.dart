@@ -6,9 +6,9 @@ class Entities extends Endpoint {
 
   Entities(UPMenusApi api) : super(api);
 
-  /// Retrieves an entity with its [id]
-  Future<Entity> get(String id) async {
-    var jsonString = await _api._get('$_path/$id');
+  /// Retrieves an entity with its [entityId]
+  Future<Entity> get(int entityId) async {
+    var jsonString = await _api._get('$_path/$entityId');
     var map = json.decode(jsonString);
     return Entity.fromJson(map);
   }

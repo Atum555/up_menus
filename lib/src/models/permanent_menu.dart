@@ -6,19 +6,24 @@ class PermanentMenu {
   double? price;
   Establishment establishment;
   Dish dish;
-  MenuCategory menuCategory;
+  MenuCategory? menuCategory;
 
   PermanentMenu({
     required this.id,
     this.price,
     required this.establishment,
     required this.dish,
-    required this.menuCategory,
+    this.menuCategory,
   });
 
   factory PermanentMenu.fromJson(Map<String, dynamic> json) => _$PermanentMenuFromJson(json);
 
   Map<String, dynamic> toJson() => _$PermanentMenuToJson(this);
+
+  @override
+  String toString() {
+    return '<PermanentMenu>($dish)';
+  }
 }
 
 @JsonSerializable()
@@ -34,4 +39,9 @@ class MenuCategory {
   factory MenuCategory.fromJson(Map<String, dynamic> json) => _$MenuCategoryFromJson(json);
 
   Map<String, dynamic> toJson() => _$MenuCategoryToJson(this);
+
+  @override
+  String toString() {
+    return name;
+  }
 }

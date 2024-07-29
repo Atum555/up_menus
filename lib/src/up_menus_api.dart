@@ -17,12 +17,33 @@ class UPMenusApi {
   late Establishments _establishments;
   Establishments get establishments => _establishments;
 
+  late Entities _entities;
+  Entities get entities => _entities;
+
+  late Campuses _campus;
+  Campuses get campus => _campus;
+
+  late DayMenus _dayMenus;
+  DayMenus get dayMenus => _dayMenus;
+
+  late PermanentMenus _permanentMenus;
+  PermanentMenus get permanentMenus => _permanentMenus;
+
+  late Allergens _allergens;
+  Allergens get allergens => _allergens;
+
   //constructor calling the default http client, and can receive a custom baseUrl to set the api url
   UPMenusApi({String? baseUrl, http.Client? client}) {
     _client = client ?? http.Client();
     _baseUrl = baseUrl ?? 'http://ementas.sas.up.pt:3000/api';
 
     _establishments = Establishments(this);
+    _entities = Entities(this);
+    _campus = Campuses(this);
+    _dayMenus = DayMenus(this);
+    _permanentMenus = PermanentMenus(this);
+    _allergens = Allergens(this);
+
   }
 
   Future<String> _get(String path) {
@@ -41,9 +62,6 @@ class UPMenusApi {
 
       final responseBody = utf8.decode(response.bodyBytes);
       if (response.statusCode >= 400) {
-        //final jsonMap = json.decode(responseBody);
-        //final error = jsonMap['error'];
-
         //(thePeras): Create a custom package exception
         throw Exception('Could not complete request');
       }

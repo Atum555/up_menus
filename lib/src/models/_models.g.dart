@@ -7,7 +7,7 @@ part of '_models.dart';
 // **************************************************************************
 
 Address _$AddressFromJson(Map<String, dynamic> json) => Address(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       address: json['address'] as String,
       postalCode: json['postalCode'] as String,
       postalDesignation: json['postalDesignation'] as String,
@@ -25,7 +25,7 @@ Map<String, dynamic> _$AddressToJson(Address instance) => <String, dynamic>{
     };
 
 Allergen _$AllergenFromJson(Map<String, dynamic> json) => Allergen(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       namePt: json['name_pt'] as String,
       nameEn: json['name_en'] as String,
       color: json['color'] as String,
@@ -41,7 +41,7 @@ Map<String, dynamic> _$AllergenToJson(Allergen instance) => <String, dynamic>{
     };
 
 Campus _$CampusFromJson(Map<String, dynamic> json) => Campus(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       name: json['name'] as String,
       establishments: (json['establishments'] as List<dynamic>?)
           ?.map((e) => Establishment.fromJson(e as Map<String, dynamic>))
@@ -55,7 +55,7 @@ Map<String, dynamic> _$CampusToJson(Campus instance) => <String, dynamic>{
     };
 
 Contact _$ContactFromJson(Map<String, dynamic> json) => Contact(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       type: $enumDecode(_$ContactTypeEnumMap, json['type']),
       value: json['value'] as String,
     );
@@ -67,15 +67,15 @@ Map<String, dynamic> _$ContactToJson(Contact instance) => <String, dynamic>{
     };
 
 const _$ContactTypeEnumMap = {
-  ContactType.EMAIL: 'EMAIL',
-  ContactType.MOBILEPHONE: 'MOBILEPHONE',
-  ContactType.TELEPHONE: 'TELEPHONE',
-  ContactType.PHONE_EXTENSION: 'PHONE_EXTENSION',
+  ContactType.email: 'EMAIL',
+  ContactType.mobilephone: 'MOBILEPHONE',
+  ContactType.telephone: 'TELEPHONE',
+  ContactType.phoneExtension: 'PHONE_EXTENSION',
 };
 
 ContentTemplate _$ContentTemplateFromJson(Map<String, dynamic> json) =>
     ContentTemplate(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       name: json['name'] as String,
       periods: (json['periods'] as List<dynamic>)
           .map((e) => $enumDecode(_$PeriodEnumMap, e))
@@ -100,15 +100,15 @@ Map<String, dynamic> _$ContentTemplateToJson(ContentTemplate instance) =>
     };
 
 const _$PeriodEnumMap = {
-  Period.lunch: 'lunch',
-  Period.dinner: 'dinner',
-  Period.breakfast: 'breakfast',
-  Period.snackBar: 'snackBar',
+  Period.lunch: 'LUNCH',
+  Period.dinner: 'DINNER',
+  Period.breakfast: 'BREAKFAST',
+  Period.snackBar: 'SNACK',
 };
 
 WeekDay _$WeekDayFromJson(Map<String, dynamic> json) => WeekDay(
-      id: json['id'] as int,
-      order: json['order'] as int,
+      id: (json['id'] as num).toInt(),
+      order: (json['order'] as num).toInt(),
       acronymPt: json['acronymPt'] as String,
       acronymEn: json['acronymEn'] as String,
       namePt: json['namePt'] as String,
@@ -125,7 +125,7 @@ Map<String, dynamic> _$WeekDayToJson(WeekDay instance) => <String, dynamic>{
     };
 
 DayMenu _$DayMenuFromJson(Map<String, dynamic> json) => DayMenu(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       day: DateTime.parse(json['day'] as String),
       period: $enumDecode(_$PeriodEnumMap, json['period']),
       status: $enumDecode(_$StatusEnumMap, json['status']),
@@ -145,8 +145,8 @@ Map<String, dynamic> _$DayMenuToJson(DayMenu instance) => <String, dynamic>{
     };
 
 const _$StatusEnumMap = {
-  Status.published: 'published',
-  Status.disabled: 'disabled',
+  Status.published: 'PUBLISHED',
+  Status.disabled: 'DISABLED',
 };
 
 MenuItem _$MenuItemFromJson(Map<String, dynamic> json) => MenuItem(
@@ -160,11 +160,11 @@ Map<String, dynamic> _$MenuItemToJson(MenuItem instance) => <String, dynamic>{
     };
 
 Dish _$DishFromJson(Map<String, dynamic> json) => Dish(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       photo: json['photo'] as String?,
       namePt: json['name_pt'] as String,
-      nameEn: json['name_en'] as String,
-      notes: json['notes'] as String,
+      nameEn: json['name_en'] as String?,
+      notes: json['notes'] as String?,
     );
 
 Map<String, dynamic> _$DishToJson(Dish instance) => <String, dynamic>{
@@ -176,9 +176,9 @@ Map<String, dynamic> _$DishToJson(Dish instance) => <String, dynamic>{
     };
 
 DishType _$DishTypeFromJson(Map<String, dynamic> json) => DishType(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       namePt: json['name_pt'] as String,
-      nameEn: json['name_en'] as String,
+      nameEn: json['name_en'] as String?,
     );
 
 Map<String, dynamic> _$DishTypeToJson(DishType instance) => <String, dynamic>{
@@ -188,10 +188,12 @@ Map<String, dynamic> _$DishTypeToJson(DishType instance) => <String, dynamic>{
     };
 
 Entity _$EntityFromJson(Map<String, dynamic> json) => Entity(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       name: json['name'] as String,
       logo: json['logo'] as String?,
-      address: Address.fromJson(json['address'] as Map<String, dynamic>),
+      address: json['address'] == null
+          ? null
+          : Address.fromJson(json['address'] as Map<String, dynamic>),
       contacts: (json['contacts'] as List<dynamic>)
           .map((e) => Contact.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -216,11 +218,13 @@ Map<String, dynamic> _$EntityToJson(Entity instance) => <String, dynamic>{
 
 Establishment _$EstablishmentFromJson(Map<String, dynamic> json) =>
     Establishment(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       namePt: json['name_pt'] as String,
       nameEn: json['name_en'] as String,
       type: Type.fromJson(json['type'] as Map<String, dynamic>),
-      address: Address.fromJson(json['address'] as Map<String, dynamic>),
+      address: json['address'] == null
+          ? null
+          : Address.fromJson(json['address'] as Map<String, dynamic>),
       campus: Campus.fromJson(json['campus'] as Map<String, dynamic>),
       contacts: (json['contacts'] as List<dynamic>)
           .map((e) => Contact.fromJson(e as Map<String, dynamic>))
@@ -228,7 +232,7 @@ Establishment _$EstablishmentFromJson(Map<String, dynamic> json) =>
       schedules: (json['schedules'] as List<dynamic>)
           .map((e) => Schedule.fromJson(e as Map<String, dynamic>))
           .toList(),
-      capacity: json['capacity'] as int,
+      capacity: (json['capacity'] as num?)?.toInt(),
       permanentMenu: json['permanentMenu'] as bool,
       dayMenu: json['dayMenu'] as bool,
     );
@@ -249,7 +253,7 @@ Map<String, dynamic> _$EstablishmentToJson(Establishment instance) =>
     };
 
 Type _$TypeFromJson(Map<String, dynamic> json) => Type(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       namePt: json['name_pt'] as String,
       nameEn: json['name_en'] as String,
     );
@@ -262,13 +266,14 @@ Map<String, dynamic> _$TypeToJson(Type instance) => <String, dynamic>{
 
 PermanentMenu _$PermanentMenuFromJson(Map<String, dynamic> json) =>
     PermanentMenu(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       price: (json['price'] as num?)?.toDouble(),
       establishment:
           Establishment.fromJson(json['establishment'] as Map<String, dynamic>),
       dish: Dish.fromJson(json['dish'] as Map<String, dynamic>),
-      menuCategory:
-          MenuCategory.fromJson(json['menuCategory'] as Map<String, dynamic>),
+      menuCategory: json['menuCategory'] == null
+          ? null
+          : MenuCategory.fromJson(json['menuCategory'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$PermanentMenuToJson(PermanentMenu instance) =>
@@ -281,7 +286,7 @@ Map<String, dynamic> _$PermanentMenuToJson(PermanentMenu instance) =>
     };
 
 MenuCategory _$MenuCategoryFromJson(Map<String, dynamic> json) => MenuCategory(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       name: json['name'] as String,
     );
 
@@ -292,7 +297,7 @@ Map<String, dynamic> _$MenuCategoryToJson(MenuCategory instance) =>
     };
 
 Schedule _$ScheduleFromJson(Map<String, dynamic> json) => Schedule(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       period: $enumDecodeNullable(_$PeriodEnumMap, json['period']),
       startHour: json['startHour'] as String,
       finishHour: json['finishHour'] as String,

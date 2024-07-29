@@ -1,20 +1,28 @@
+import 'package:json_annotation/json_annotation.dart';
+
 enum Period {
+  @JsonValue("LUNCH")
   lunch,
+
+  @JsonValue("DINNER")
   dinner,
+
+  @JsonValue("BREAKFAST")
   breakfast,
-  snackBar,
+
+  @JsonValue("SNACK")
+  snackBar;
 }
 
-const _periodEnumMap = {
-  'lunch': Period.lunch,
-  'dinner': Period.dinner,
-  'breakfast': Period.breakfast,
-  'snackBar': Period.snackBar,
+extension PeriodExtension on Period {
+  String get value => _values[this]!;
+} 
+
+const Map<Period, String> _values = {
+  Period.lunch: 'LUNCH',
+  Period.dinner: 'DINNER',
+  Period.breakfast: 'BREAKFAST',
+  Period.snackBar: 'SNACK',
 };
 
-Period periodFromJson(String? json) => _periodEnumMap[json] ?? Period.lunch;
 
-String periodToJson(Period? instance) => _periodEnumMap.keys.firstWhere(
-      (k) => _periodEnumMap[k] == instance,
-      orElse: () => 'lunch',
-    );

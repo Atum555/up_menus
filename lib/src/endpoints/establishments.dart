@@ -7,7 +7,7 @@ class Establishments extends Endpoint {
   Establishments(UPMenusApi api) : super(api);
 
   /// Retrieves an establishment with its [establishmentId]
-  Future<Establishment> get(String establishmentId) async {
+  Future<Establishment> get(int establishmentId) async {
     var jsonString = await _api._get('$_path/$establishmentId');
     var map = json.decode(jsonString);
 
@@ -15,16 +15,12 @@ class Establishments extends Endpoint {
   }
 
   // Returns the content template of a given [establishmentId]
-  Future<Establishment> getContentTemplate(String establishmentId) async {
+  Future<Establishment> getContentTemplate(int establishmentId) async {
     var jsonString = await _api._get('$_path/$establishmentId/content-template');
     var map = json.decode(jsonString);
 
     return Establishment.fromJson(map);
   }
-
-  // TODO: Daily Menus
-
-  // TODO: Permanent Menus
 
   /// Returns all the existing establishments
   /// TODO(thePeras): Add filters: type, campus, etc

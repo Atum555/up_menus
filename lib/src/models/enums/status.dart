@@ -1,26 +1,18 @@
+import 'package:json_annotation/json_annotation.dart';
+
 enum Status {
+  @JsonValue('PUBLISHED')
   published,
+
+  @JsonValue('DISABLED')
   disabled,
 }
 
-Status statusFromJson(String value) {
-  switch (value) {
-    case 'published':
-      return Status.published;
-    case 'disabled':
-      return Status.disabled;
-    default:
-      throw ArgumentError.value(value, 'value', 'Invalid status');
-  }
+extension StatusExtension on Status {
+  String get value => _values[this]!;
 }
 
-String statusToJson(Status instance) {
-  switch (instance) {
-    case Status.published:
-      return 'published';
-    case Status.disabled:
-      return 'disabled';
-    default:
-      throw ArgumentError.value(instance, 'instance', 'Invalid status');
-  }
-}
+const Map<Status, String> _values = {
+  Status.published: 'PUBLISHED',
+  Status.disabled: 'DISABLED',
+};

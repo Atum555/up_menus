@@ -15,11 +15,34 @@ class Contact {
   factory Contact.fromJson(Map<String, dynamic> json) => _$ContactFromJson(json);
 
   Map<String, dynamic> toJson() => _$ContactToJson(this);
+
+  @override
+  String toString() {
+    return '<Contact>($type: $value)';
+  }  
 }
 
 enum ContactType {
-  EMAIL,
-  MOBILEPHONE,
-  TELEPHONE,
-  PHONE_EXTENSION,
+  @JsonValue('EMAIL')
+  email,
+
+  @JsonValue('MOBILEPHONE')
+  mobilephone,
+
+  @JsonValue('TELEPHONE')
+  telephone,
+
+  @JsonValue('PHONE_EXTENSION')
+  phoneExtension
 }
+extension ContactTypeExtension on ContactType {
+  String get value => _values[this]!;
+}
+
+const Map<ContactType, String> _values = {
+  ContactType.email: 'EMAIL',
+  ContactType.mobilephone: 'MOBILEPHONE',
+  ContactType.telephone: 'TELEPHONE',
+  ContactType.phoneExtension: 'PHONE_EXTENSION',
+};
+

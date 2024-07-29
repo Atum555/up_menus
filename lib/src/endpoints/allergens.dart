@@ -1,14 +1,14 @@
 part of up_menus;
 
-class Allergerns extends Endpoint {
+class Allergens extends Endpoint {
   @override
-  String get _path => '/allergerns'; //FIX(thePeras): after update the api, change to /allergens
+  String get _path => '/allergerns'; //TODO: (thePeras): after update the api, change to /allergens
 
-  Allergerns(UPMenusApi api) : super(api);
+  Allergens(UPMenusApi api) : super(api);
 
-  /// Retrieves an allergen with its [id]
-  Future<Allergen> get(String id) async {
-    var jsonString = await _api._get('$_path/$id');
+  /// Retrieves an allergen with its [allergenId]
+  Future<Allergen> get(int allergenId) async {
+    var jsonString = await _api._get('$_path/$allergenId');
     var map = json.decode(jsonString);
     return Allergen.fromJson(map);
   }

@@ -15,4 +15,9 @@ class Campus {
   factory Campus.fromJson(Map<String, dynamic> json) => _$CampusFromJson(json);
 
   Map<String, dynamic> toJson() => _$CampusToJson(this);
+
+  @override
+  String toString() {
+    return '<Campus>($name)';
+  }
 }

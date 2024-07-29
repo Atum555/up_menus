@@ -21,6 +21,11 @@ class ContentTemplate {
   factory ContentTemplate.fromJson(Map<String, dynamic> json) => _$ContentTemplateFromJson(json);
 
   Map<String, dynamic> toJson() => _$ContentTemplateToJson(this);
+
+  @override
+  String toString() {
+    return '<ContentTemplate>($name)';
+  }
 }
 
 @JsonSerializable()
@@ -44,4 +49,9 @@ class WeekDay {
   factory WeekDay.fromJson(Map<String, dynamic> json) => _$WeekDayFromJson(json);
 
   Map<String, dynamic> toJson() => _$WeekDayToJson(this);
+
+  @override
+  String toString() {
+    return '<WeekDay>($namePt)';
+  }
 }

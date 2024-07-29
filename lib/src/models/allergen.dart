@@ -21,4 +21,9 @@ class Allergen {
   factory Allergen.fromJson(Map<String, dynamic> json) => _$AllergenFromJson(json);
 
   Map<String, dynamic> toJson() => _$AllergenToJson(this);
+
+  @override
+  String toString() {
+    return "<Allergen>($namePt)";
+  }
 }

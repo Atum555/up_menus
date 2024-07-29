@@ -22,6 +22,11 @@ class DayMenu {
   factory DayMenu.fromJson(Map<String, dynamic> json) => _$DayMenuFromJson(json);
 
   Map<String, dynamic> toJson() => _$DayMenuToJson(this);
+
+  @override
+  String toString() {
+    return '<DayMenu>($day, $period)';
+  }
 }
 
 @JsonSerializable()
@@ -37,4 +42,9 @@ class MenuItem {
   factory MenuItem.fromJson(Map<String, dynamic> json) => _$MenuItemFromJson(json);
 
   Map<String, dynamic> toJson() => _$MenuItemToJson(this);
+
+  @override
+  String toString() {
+    return '<MenuItem>($dishType, $dish)';
+  }
 }

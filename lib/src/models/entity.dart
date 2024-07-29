@@ -5,7 +5,7 @@ class Entity {
   int id;
   String name;
   String? logo;
-  Address address;
+  Address? address;
   List<Contact> contacts;
   List<Establishment> establishments;
   List<Establishment> supervisingEstablishments;
@@ -14,7 +14,7 @@ class Entity {
     required this.id,
     required this.name,
     this.logo,
-    required this.address,
+    this.address,
     required this.contacts,
     required this.establishments,
     required this.supervisingEstablishments,
@@ -23,4 +23,9 @@ class Entity {
   factory Entity.fromJson(Map<String, dynamic> json) => _$EntityFromJson(json);
 
   Map<String, dynamic> toJson() => _$EntityToJson(this);
+
+  @override
+  String toString() {
+    return '<Entity>($name)';
+  }
 }

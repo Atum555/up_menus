@@ -8,11 +8,11 @@ class Establishment {
   @JsonKey(name: 'name_en')
   String nameEn;
   Type type;
-  Address address;
+  Address? address;
   Campus campus;
   List<Contact> contacts;
   List<Schedule> schedules;
-  int capacity;
+  int? capacity;
   bool permanentMenu;
   bool dayMenu;
 
@@ -21,11 +21,11 @@ class Establishment {
     required this.namePt,
     required this.nameEn,
     required this.type,
-    required this.address,
+    this.address,
     required this.campus,
     required this.contacts,
     required this.schedules,
-    required this.capacity,
+    this.capacity,
     required this.permanentMenu,
     required this.dayMenu,
   });
@@ -33,6 +33,11 @@ class Establishment {
   factory Establishment.fromJson(Map<String, dynamic> json) => _$EstablishmentFromJson(json);
 
   Map<String, dynamic> toJson() => _$EstablishmentToJson(this);
+
+  @override
+  String toString() {
+    return '<Establishment>($namePt)';
+  }
 }
 
 @JsonSerializable()
@@ -52,4 +57,9 @@ class Type {
   factory Type.fromJson(Map<String, dynamic> json) => _$TypeFromJson(json);
 
   Map<String, dynamic> toJson() => _$TypeToJson(this);
+
+  @override
+  String toString() {
+    return namePt;
+  }
 }
