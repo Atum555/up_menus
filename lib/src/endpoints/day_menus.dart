@@ -33,7 +33,6 @@ class DayMenus extends Endpoint {
       throw ArgumentError('startDate and endDate must be provided together');
     }
 
-    // Building the url
     String url = '$_path/$establishmentId/day-menus?period=${period.value}';
 
     if (_bothNotNull(weekNumber, year)) {
@@ -45,12 +44,7 @@ class DayMenus extends Endpoint {
       url += '${endDate!.year}-${endDate.month}-${endDate.year}';
     } else if (day != null) {
       url += '&day=${day.toIso8601String()}';
-    } else {
-      url +=
-          '&currentWeek'; // TODO(thePeras): Delete this when the api is updated
     }
-
-    print(url);
 
     return await _list(path: url, fromJson: DayMenu.fromJson);
   }

@@ -2,7 +2,7 @@ part of up_menus;
 
 class Allergens extends Endpoint {
   @override
-  String get _path => '/allergerns'; //TODO: (thePeras): after update the api, change to /allergens
+  String get _path => '/allergens';
 
   Allergens(UPMenusApi api) : super(api);
 
@@ -14,7 +14,6 @@ class Allergens extends Endpoint {
   }
 
   /// Returns all the existing allergens
-  Future<Iterable<Allergen>> list() async => _list(
-      path: _path,
-      fromJson: Allergen.fromJson);
+  Future<Iterable<Allergen>> list() async =>
+      _list(path: _path, fromJson: Allergen.fromJson);
 }

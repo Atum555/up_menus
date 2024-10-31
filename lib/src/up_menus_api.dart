@@ -1,4 +1,3 @@
-
 part of up_menus;
 
 /// Accesspoint for the api
@@ -43,7 +42,6 @@ class UPMenusApi {
     _dayMenus = DayMenus(this);
     _permanentMenus = PermanentMenus(this);
     _allergens = Allergens(this);
-
   }
 
   Future<String> _get(String path) {
@@ -51,8 +49,7 @@ class UPMenusApi {
   }
 
   Future<String> _getImpl(String url) async {
-    return await _requestWrapper(() async =>
-        await _client.get(Uri.parse(url)));
+    return await _requestWrapper(() async => await _client.get(Uri.parse(url)));
   }
 
   Future<String> _requestWrapper(
@@ -62,7 +59,6 @@ class UPMenusApi {
 
       final responseBody = utf8.decode(response.bodyBytes);
       if (response.statusCode >= 400) {
-        //(thePeras): Create a custom package exception
         throw Exception('Could not complete request');
       }
       return responseBody;
@@ -70,5 +66,4 @@ class UPMenusApi {
       throw Exception('Could not complete request');
     }
   }
-
 }
